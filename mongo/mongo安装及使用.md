@@ -13,8 +13,11 @@
 3. 	重命名  进入 mongodb 并创建 数据目录 和 日志目录
 	
 	mv mongodb-linux-x86_64-rhel62-3.6.5 mongodb
+	
 	cd mongodb
+	
 	mkdir db
+	
 	mkdir logs
 	
 4.  进入 mongodb 中 bin 目录创建 mongo的配置文件
@@ -53,6 +56,7 @@
 	因为我们现在 在mongodb的bin 目录中  所以 使用两次 cd .. 命令  
 	
 	cd .. 
+	
 	cd .. 
 	
 	开始复制 
