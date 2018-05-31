@@ -26,15 +26,22 @@
 5.  在 mongodb.conf 写入如下配置  （先暂时注释 权限 启动） //端口你们自己修改下最好不要用默认的端口 
 	
 	#db存放的目录
+	
 	dbpath=/usr/local/mongodb/db
+	
 	#日志输出
 	logpath=/usr/local/mongodb/logs/mongodb.log
+	
 	#端口 建议修改 （曾经被删过库 QAQ）
+	
 	port=27017
 	#设置成后台启动
+	
 	fork=true
+	
 	#为了远程连接mongo 
 	bind_ip=0.0.0.0
+	
 	#权限启动 需要认证
 	#auth=true
 	
