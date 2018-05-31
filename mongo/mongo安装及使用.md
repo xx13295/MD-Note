@@ -33,19 +33,23 @@
 	dbpath=/usr/local/mongodb/db
 	
 	#日志输出
+	
 	logpath=/usr/local/mongodb/logs/mongodb.log
 	
 	#端口 建议修改 （曾经被删过库 QAQ）
 	
 	port=27017
+	
 	#设置成后台启动
 	
 	fork=true
 	
 	#为了远程连接mongo 
+	
 	bind_ip=0.0.0.0
 	
 	#权限启动 需要认证
+	
 	#auth=true
 	
 	
