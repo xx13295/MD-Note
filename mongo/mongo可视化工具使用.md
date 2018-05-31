@@ -17,6 +17,7 @@
 	
 	点击我同意的radio ，信息啥省略 然后一路下一步就完事了。
 	
+	
 3. 图片教程  
 ![image](https://github.com/xx13295/wxm/blob/master/images/robo1.png?raw=true)
 ![image](https://github.com/xx13295/wxm/blob/master/images/robo2.png?raw=true)
