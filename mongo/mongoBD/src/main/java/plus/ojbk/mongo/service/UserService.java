@@ -4,9 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import static org.springframework.data.mongodb.core.query.Criteria.where; 
+import static org.springframework.data.mongodb.core.query.Query.query; 
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -83,6 +87,62 @@ public class UserService {
 	 */
 	public List<User> getAllUser() {
 		Query query = new Query();
+		return this.mongoTemplate.find(query, User.class);
+	}
+	
+	/**
+	 * 这里使用静态导包 
+	 * import static org.springframework.data.mongodb.core.query.Criteria.where; 
+	 * import static org.springframework.data.mongodb.core.query.Query.query; 
+	 * 
+	 * 一下示例 给出 查询   num大于 某一个值的 全部用户
+	 *   gt  相当于       〉
+	 *   gte 相当于       〉=
+	 *   lt  相当于      〈
+	 *   lte 相当于      〈 =
+	 *   is  相当于       ==
+	 *   ne  相当于       !=
+	 *   in  相当于      sql中的in
+	 *   nin 相当于       not in
+	 *   orOperator 接受多个条件，组成or逻辑  
+	 */
+	public List<User> getUser(Integer num) {
+		Criteria criteria = where("num").gt(num);
+		Query query = query(criteria);
+		// 上面两句可以简写 成下面这句   
+ 		//Query query = query(where("num").gt(num));
+		return this.mongoTemplate.find(query, User.class);
+	}
+	
+	/**
+	 * 模糊查询    （通过邮箱模糊查询用户）  
+	 *  这里是 示例仅仅是个小栗子qwq
+	 */
+	public List<User> getUserByEmailKey(String key){
+		Query query = query(where("email").regex(".*"+key+".*"));
+		return this.mongoTemplate.find(query, User.class);
+	}
+	
+	/**
+	 * 倒叙查询  加入 query.with(new Sort(Direction.DESC, "add_date"));
+	 */
+	public List<User> getSortUserByEmailKey(String key){
+		Query query = query(where("email").regex(".*"+key+".*"));
+		query.with(new Sort(Direction.DESC, "add_date"));
+		return this.mongoTemplate.find(query, User.class);
+	}
+	
+	/**
+	 * 分页查询 加入       
+	 * query.skip(0);    从第几条开始 【版本不同  有的版本是 表示第几页】
+	 * query.limit(10);  每页显示的条数
+	 *  
+	 */
+	public List<User> getSortUserByEmailKeys(String key){
+		Query query = query(where("email").regex(".*"+key+".*"));
+		query.skip(0);
+		query.limit(10);
+		query.with(new Sort(Direction.DESC, "add_date"));
 		return this.mongoTemplate.find(query, User.class);
 	}
 }
