@@ -133,6 +133,6 @@
 	
 	可以看出 windows 版的内置很多的编码器了直接用 就完事了。 
 	
-	![image](https://github.com/xx13295/wxm/blob/master/images/ffmpeg/ffmpeg1.png?raw=true)
+![image](https://github.com/xx13295/wxm/blob/master/images/ffmpeg/ffmpeg1.png?raw=true)
 	 
 	
