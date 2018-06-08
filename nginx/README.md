@@ -19,11 +19,12 @@
 	//软链接 这样不管在哪里都可以直接使用 nginx命令不需要进入 /usr/local/nginx/sbin目录
 	sudo ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
 	
-	
-#常用命令
+# 常用命令
 
 	sudo nginx  		         启动 
+	
 	sudo nginx -s reload   配置文件变化后重新加载配置文件并重启nginx服务
+	
 	sudo nginx -s stop     停止
 	
 	sudo nginx -v  显示nginx的版本号
