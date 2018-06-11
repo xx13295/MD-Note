@@ -2,7 +2,7 @@
 
 ####  acme.sh 
 
-  [传送门1] [1]
+[传送门1] [1]
   
 #### 参考 该博主
 [传送门2] [3]
@@ -12,7 +12,8 @@
   [1]: https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E/        "传送门1"
   [2]: https://ak-console.aliyun.com/#/accesskey/  "获取key"
   [3]: https://my.oschina.net/kimver/blog/1634575/  "传送门2"
-##  
+
+### 执行以下命令 
 
 	curl https://get.acme.sh | sh	
 	source ~/.bashrc
@@ -41,4 +42,3 @@
 
 
 ##  好了 ，这样就拥有了免费的ssl 证书 三个月一次 他会自动 帮你重新 更新证书的
-	
