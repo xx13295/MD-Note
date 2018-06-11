@@ -1,24 +1,19 @@
 ###Let's Encrypt 宣布 ACME v2 正式支持通配符证书。Let's Encrypt 宣称将继续清除 Web 上采用 HTTPS 的障碍，让每个网站轻松获取管理证书。
 
 ####  acme.sh 
+[传送门1](https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E/)
 
-[传送门1] [1]
   
 #### 参考 该博主
-[传送门2] [3]
+[传送门2](https://my.oschina.net/kimver/blog/1634575/)
 
-
-
-  [1]: https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E/        "传送门1"
-  [2]: https://ak-console.aliyun.com/#/accesskey/  "获取key"
-  [3]: https://my.oschina.net/kimver/blog/1634575/  "传送门2"
 
 ### 执行以下命令 
 
 	curl https://get.acme.sh | sh	
 	source ~/.bashrc
 
-#### 导入阿里云后台的密钥 [获取key] [2]
+#### 导入阿里云后台的密钥 [获取key](https://ak-console.aliyun.com/#/accesskey/)
 
 	export Ali_Key="dsadhasdkjaskdjsds"
 	export Ali_Secret="dsfhsfsfksfsldfsfds"
