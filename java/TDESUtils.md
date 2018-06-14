@@ -1,8 +1,10 @@
+```
 	import java.io.IOException;
 	import java.security.InvalidAlgorithmParameterException;
 	import java.security.InvalidKeyException;
 	import java.security.NoSuchAlgorithmException;
 	import java.security.spec.InvalidKeySpecException;
+	import java.util.Base64;
 	
 	import javax.crypto.BadPaddingException;
 	import javax.crypto.Cipher;
@@ -14,8 +16,7 @@
 	import javax.crypto.spec.DESedeKeySpec;
 	import javax.crypto.spec.IvParameterSpec;
 	
-	import sun.misc.BASE64Decoder;
-	import sun.misc.BASE64Encoder;
+
 	
 	/**
 	 * @author 3DES 加解密
@@ -48,10 +49,10 @@
 			// secretKey)就可以了.
 			final Cipher cipher = Cipher.getInstance(DES_CBC_ALGORITHM);
 			cipher.init(Cipher.ENCRYPT_MODE, secretKey, iv);
-			final byte[] b = cipher.doFinal(value.getBytes("UTF-8"));
-			// --通过base64,将加密数组转换成字符串
-			final BASE64Encoder encoder = new BASE64Encoder();
-			return encoder.encode(b);
+			final byte[] valueByte = cipher.doFinal(value.getBytes("UTF-8"));
+			// 通过base64,将加密数组转换成字符串
+			final Base64.Encoder encoder = Base64.getEncoder();
+			return encoder.encodeToString(valueByte);
 		}
 	
 		/**
@@ -65,8 +66,9 @@
 				throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException,
 				NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 			// --通过base64,将字符串转成byte数组
-			final BASE64Decoder decoder = new BASE64Decoder();
-			final byte[] byteValue = decoder.decodeBuffer(value);
+			final Base64.Decoder decoder = Base64.getDecoder();
+			final byte[] textByte = value.getBytes("UTF-8"); 
+			final byte[] byteValue = decoder.decode(textByte);
 			// --解密的key
 			final DESKeySpec desKeySpec = new DESKeySpec(key.getBytes("UTF-8"));
 			final SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
@@ -97,9 +99,9 @@
 			final SecretKey securekey = keyFactory.generateSecret(dks);
 			final Cipher cipher = Cipher.getInstance(DES_ECB_ALGORITHM);
 			cipher.init(Cipher.ENCRYPT_MODE, securekey);
-			final byte[] b = cipher.doFinal(value.getBytes());
-			final BASE64Encoder encoder = new BASE64Encoder();
-			return encoder.encode(b).replaceAll("\r", "").replaceAll("\n", "");
+			final byte[] valueByte = cipher.doFinal(value.getBytes());
+			final Base64.Encoder encoder = Base64.getEncoder();
+			return encoder.encodeToString(valueByte).replaceAll("\r", "").replaceAll("\n", "");
 	
 		}
 	
@@ -114,8 +116,9 @@
 				throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException,
 				NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 			// --通过base64,将字符串转成byte数组
-			final BASE64Decoder decoder = new BASE64Decoder();
-			final byte[] byteValue = decoder.decodeBuffer(value);
+			final Base64.Decoder decoder = Base64.getDecoder();
+			final byte[] textByte = value.getBytes("UTF-8"); 
+			final byte[] byteValue = decoder.decode(textByte);
 			// --解密的key
 			final DESedeKeySpec dks = new DESedeKeySpec(key.getBytes("UTF-8"));
 			final SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
@@ -128,3 +131,4 @@
 		}
 	
 	}
+```
