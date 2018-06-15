@@ -1,0 +1,8 @@
+#convter data
+JAVA_HOME=/usr/java/jdk1.8.0_131
+TOOL_PATH=/home/ojbk/tools/pw-conver.jar
+if [ $# -lt 2 ];then
+  echo "The number of parameters should be greater than 1"
+else
+ $JAVA_HOME/bin/java -jar $TOOL_PATH $*  
+fi
