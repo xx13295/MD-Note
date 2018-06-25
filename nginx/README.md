@@ -33,4 +33,16 @@
 	sudo nginx -T  检查nginx配置文件的正确定及配置文件的详细配置内容
 
 
+### 开启 http2 需要从新增加编译参数
+
+	./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_ssl_module --with-threads --with-http_gzip_static_module --with-http_sub_module --with-http_v2_module
+	
+	make  
+	
+	sudo make install
+	
+	
+	然后在nginx 的配置 文件
+	改为	listen  443 ssl http2 default_server;
+	重启 ojbk
 	
