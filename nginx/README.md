@@ -43,6 +43,6 @@
 	
 	
 	然后在nginx 的配置 文件
-	改为	listen  443 ssl http2 default_server;
+	改为	listen  443 ssl http2;
 	重启 ojbk
 	
