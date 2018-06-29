@@ -9,7 +9,8 @@
 ### 查询 /home/ojbk/images/ 中 文件后缀为.jpg 且时间为5天以前的 图片将其删除 
 >find /home/ojbk/images/ -mtime +5 -name "*.jpg" -exec rm -rf {} \;
 
-### 总不能每次都手动执行上面这条命令吧这样太麻烦了，于是我们把它加入到定时任务中 使用 crontab -e 
+### 总不能每次都手动执行上面这条命令吧这样太麻烦了
+###于是我们把它加入到定时任务中 使用 crontab -e 
 >2 0 * * * /bin/find /home/ojbk/images/ -mtime +5 -name "*.jpg" -exec rm -rf {} \;
 
 上面这条命令说的是 每天凌晨0点2分  删除/home/ojbk/images/中 前 5天的 jpg 图片
@@ -32,6 +33,7 @@
 ## 定时任务   
 
 	* * * * * command 
+
 
 ####这前面 的 五个  * 代表什么意思呢?
 	
