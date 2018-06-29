@@ -10,6 +10,7 @@
 >find /home/ojbk/images/ -mtime +5 -name "*.jpg" -exec rm -rf {} \;
 
 ### 总不能每次都手动执行上面这条命令吧这样太麻烦了
+
 ###于是我们把它加入到定时任务中 使用 crontab -e 
 >2 0 * * * /bin/find /home/ojbk/images/ -mtime +5 -name "*.jpg" -exec rm -rf {} \;
 
