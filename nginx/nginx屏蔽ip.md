@@ -49,6 +49,15 @@
 	
 然后重启 就ojbk
 
+对了。被禁止的ip会显示 403  
 
+可以在server{} 中加入 
+	
+	error_page 403 /403.html;
+	        location = /403.html {
+	          root  html;
+	          allow all;
+	}  
 
+然后在 /usr/local/nginx/html 中 mkdir 一个403.html 页面  就会跳转到这里啦
 
