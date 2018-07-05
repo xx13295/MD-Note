@@ -1,5 +1,5 @@
 
-#Nginx-屏蔽指定IP	
+# Nginx-屏蔽指定IP	
 	
 >cd usr/local/nginx/conf
 
@@ -29,13 +29,13 @@
 	
 # 当然 需要 进入nginx.conf 中 include 一下这个配置 才会生效
 
->cd usr/local/nginx/conf
+>cd /usr/local/nginx/conf
 
 >vi nginx.conf
 
 加入以下这句 即可
 
->include /deny/ip.conf; 
+>include usr/local/nginx/conf/deny/ip.conf; 
 	
 >Esc    ---》     :wq
 
