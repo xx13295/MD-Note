@@ -30,7 +30,7 @@
 
 	static char ngx_http_server_string[] = "Server: nginx" CRLF;
 	
-	把其中的nginx改成 自己喜欢的都可以 我改成了 OJBK . 于是就变成了Server:OJBK.   这里配合 上面的隐藏版本号食用
+	把其中的nginx改成 自己喜欢的都可以 我改成了 ojbk . 于是就变成了Server:ojbk.   这里配合 上面的隐藏版本号食用
 
 
 ### 修改 src/core/nginx.h 
@@ -45,5 +45,12 @@
 	保存一下 。然后 cd ..  再cd ..   从新编译安装一下  再把之前的配置文件拷贝进去  启动nginx 就可以 愉快的网上冲浪了。
    
    
-###  噢对了 这个时候 还得修改一下 /usr/local/nginx/html 中 html 文件 达到完美的效果 
+###  噢对了 这个时候 还得修改一下 /usr/local/nginx/html 中 html 文件 自定义下 错误文件路径  达到完美的效果 
+
+
+## 已知问题， 可能由于我的https配置问题？用了https  再 server_tokens off;隐藏版本号 后就失效  
+	
+		所以 不隐藏就好了。反正错误页面也可以自定义， 版本也是你 自定义的，相当于隐藏了。 
+		
+		自定义错误可以 参考 nginx屏蔽ip.md 中介绍
    
