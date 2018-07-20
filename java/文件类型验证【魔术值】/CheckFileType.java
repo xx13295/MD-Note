@@ -32,7 +32,7 @@ public class CheckFileType {
 		FILE_TYPE.put("pdf", "255044462D312E"); //pdf文件
 		FILE_TYPE.put("docx", "504B0304");//与zip 相同开头 
 		FILE_TYPE.put("rar", "52617221");
-		//如果以上 文件类型不能满足你 ，问题不大 。  上传你需要 的文件  52行log打印的 魔术值 抬头自己加入map中即可 
+		//如果以上 文件类型不能满足你 ，问题不大 。  上传你需要 的文件  64行log打印的 魔术值 抬头自己加入map中即可 
 	}
 	
 	/**
