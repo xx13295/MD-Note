@@ -17,11 +17,11 @@
 	按 一下 键盘的     i  键  开始写入 下面的一大串 内容    写完后 Esc : wq 保存
 	
 	
-	alias rm = mvfile        
-	alias lss = 'ls ~/.Ojbk'  
-	alias mvv = undel
-	alias del = delfile 
-	alias delall = delallfile 
+	alias rm=mvfile        
+	alias lss='ls ~/.Ojbk'  
+	alias mvv=undel
+	alias del=delfile 
+	alias delall=delallfile 
 	 
 	mvfile()  
 	{  
