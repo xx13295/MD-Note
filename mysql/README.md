@@ -92,5 +92,8 @@
 	systemctl enable mysqld.service
 	 
 	//查看mysql版本
-
+	mysql -V
+	连上了MySQL服务器就 select version();
 	
+	//在执行命令时候出现警告 可查看警告
+	show warnings;
