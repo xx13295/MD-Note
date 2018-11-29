@@ -21,10 +21,19 @@ CentOS
 
 #### 下载脚本
 
+	作者
 >wget --no-check-certificate -qO InstallNET.sh 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh' && chmod a+x InstallNET.sh	
 	
-我安装完后当时的 [脚本](https://github.com/xx13295/MD-Note/blob/master/linux/InstallNET.sh/)已经备份了一份 
-上面的链接脚本作者是可能会实时更新的以后会出现更多的新功能也可能修复某一些bug
+	小明 
+
+>wget --no-check-certificate -qO InstallNET.sh 'https://static.ojbk.plus/shell/InstallNET.sh' && chmod a+x InstallNET.sh	
+	
+我安装完后当时的 [脚本](https://static.ojbk.plus/shell/InstallNET.sh/)
+
+{https://static.ojbk.plus/shell/InstallNET.sh} 已经备份了一份 
+
+原作者的链接脚本可能会实时更新的以后会出现更多的新功能也可能修复某一些bug
+
  当然也不能保证以后会不会加入恶意代码啥的 毕竟在网上 防人之心不可无
 
 #### 默认安装
@@ -35,6 +44,16 @@ CentOS
 	[链接不了不要慌张 等就完事了 过了1小时还不行 估计要重装了]
 	 如果要查看进度 一般的云服务商都有vnc服务
 	 使用它就可以实时查看安装进度了
+	
+
+#### [备用]
+
+上面的脚本功能比较强大 可以装 多种系统、下面的是阉割版 仅装centos 墙裂推荐。
+
+>wget --no-check-certificate -qO CentOSNET.sh 'https://static.ojbk.plus/shell/CentOSNET.sh' && chmod a+x CentOSNET.sh
+
+>bash CentOSNET.sh -c 6.8 -v 64 -a
+
 
 ### 原文链接 
 
