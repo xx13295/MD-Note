@@ -32,6 +32,7 @@ CentOS
 >bash InstallNET.sh -c 6.9 -v 64 -a
 	 
 	 然后 等待 20~30分钟左右 就好了
+	[链接不了不要慌张 等就完事了 过了1小时还不行 估计要重装了]
 	 如果要查看进度 一般的云服务商都有vnc服务
 	 使用它就可以实时查看安装进度了
 
@@ -149,7 +150,21 @@ CentOS
 可以先登录普通用户 使用 `su root`切换root用户。
 
 
+#### 五、 禁止 ping  
+	
+	ping命令常用于网络检测，确定两台主机之间是否可以通信，
+	其使用的是ICMP（Internet控制报文协议），起到一定的安全作用。
 
+
+系统默认是允许ICMP协议的，设置`/proc/sys/net/ipv4/icmp_echo_ignore_all`参数为1
+
+> echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_all
+
+检查参数是否为 1
+
+>cat  /proc/sys/net/ipv4/icmp_echo_ignore_all
+
+如果该参数为1，表示禁止忽略ICMP报文的所有请求，系统默认值为0，表示允许其它主机ping该主机
 
 
 
