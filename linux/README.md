@@ -19,24 +19,49 @@ CentOS
 
 >yum install -y xz openssl gawk coreutils file	
 
-#### 下载脚本
 
-	作者
+#### [下载脚本]
+
+下面的是阉割版 仅装centos 墙裂推荐。
+
+	下载
+
+>wget --no-check-certificate -qO CentOSNET.sh 'https://static.ojbk.plus/shell/CentOSNET.sh' && chmod a+x CentOSNET.sh
+	
+	默认安装
+
+>bash CentOSNET.sh -c 6.8 -v 64 -a
+	
+	脚本使用 
+	
+	Usage:
+        bash CentOSNET.sh       -c/--centos [dist-version]
+                                -v/--ver [32/i386|64/amd64]
+                                --ip-addr/--ip-gate/--ip-mask
+                                -yum/--mirror
+                                -a/-m
+                                
+详情请查看 作者原文[原文链接](https://moeclub.org/2018/03/26/597/)
+
+
+#### 功能强大的脚本 支持 CentOS,Ubuntu,Debian
+
+	原作者的下载链接
 >wget --no-check-certificate -qO InstallNET.sh 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh' && chmod a+x InstallNET.sh	
 	
-	小明 
+	小明 的下载链接
 
 >wget --no-check-certificate -qO InstallNET.sh 'https://static.ojbk.plus/shell/InstallNET.sh' && chmod a+x InstallNET.sh	
 	
-我安装完后当时的 [脚本](https://static.ojbk.plus/shell/InstallNET.sh/)
+我的下载链接是我安装完后，当时的 [脚本](https://static.ojbk.plus/shell/InstallNET.sh/)
 
-{https://static.ojbk.plus/shell/InstallNET.sh} 已经备份了一份 
+{https://static.ojbk.plus/shell/InstallNET.sh} 备份了一下
 
 原作者的链接脚本可能会实时更新的以后会出现更多的新功能也可能修复某一些bug
 
  当然也不能保证以后会不会加入恶意代码啥的 毕竟在网上 防人之心不可无
 
-#### 默认安装
+	 默认安装
 	
 >bash InstallNET.sh -c 6.9 -v 64 -a
 	 
@@ -45,23 +70,14 @@ CentOS
 	 如果要查看进度 一般的云服务商都有vnc服务
 	 使用它就可以实时查看安装进度了
 	
+	
 
-#### [备用]
-
-上面的脚本功能比较强大 可以装 多种系统、下面的是阉割版 仅装centos 墙裂推荐。
-
->wget --no-check-certificate -qO CentOSNET.sh 'https://static.ojbk.plus/shell/CentOSNET.sh' && chmod a+x CentOSNET.sh
-
->bash CentOSNET.sh -c 6.8 -v 64 -a
-
-
-### 原文链接 
+#### 警告
 
 	反正别人造好的轮子 用就完事了 用就代表相信作者 ， 
 	当然也要承担一定的风险（ 比如 被加入恶意代码啥的） 。
 	不相信作者就别用！
 
-[原文链接](https://moeclub.org/2018/04/03/603/)
 
 ## 正式 折腾开始
 
