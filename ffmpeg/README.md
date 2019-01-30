@@ -97,7 +97,7 @@
 	
 	
 	转换 这个音乐文件比特率为 320  我现在想转换成 128 
-	ffmpeg -y -i 'Waiting For Love.mp3' -acodec libmp3lame -ab 128k -f mp3 'new file.mp3'
+	ffmpeg -y -i 'Waiting For Love.mp3' -map 0:0 -acodec libmp3lame -ab 128k -f mp3 newFile.mp3
 	
 	
 	
