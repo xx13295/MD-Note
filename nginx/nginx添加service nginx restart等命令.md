@@ -9,7 +9,7 @@
 	
 	记得  使用  `chmod 755 nginx`
 	
-
+>chkconfig --add nginx 
 		
 	#!/bin/sh
 	#
