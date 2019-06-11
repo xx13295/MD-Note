@@ -154,6 +154,10 @@ CentOS
 
 >chmod u+w /etc/sudoers
 
+.
+
+>vi /etc/sudoers
+
 找到`root    ALL=(ALL)       ALL` 这一行在它下面一行加上
 
 >ojbk    ALL=(ALL)       NOPASSWD: ALL
