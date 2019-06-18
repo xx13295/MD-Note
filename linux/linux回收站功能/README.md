@@ -61,4 +61,4 @@
 
 	这样 删除到回收站里的 文件定期就会自动删除 ~
 ![image](https://github.com/xx13295/wxm/blob/master/images/o.png?raw=true)
-[传送门](https://github.com/xx13295/CodingNote/tree/master/linux%E5%AE%9A%E6%97%B6%E6%B8%85%E7%90%86%E6%96%87%E4%BB%B6)	
+[传送门](https://github.com/xx13295/MD-Note/tree/master/linux/linux%E5%AE%9A%E6%97%B6%E6%B8%85%E7%90%86%E6%96%87%E4%BB%B6)	
