@@ -18,8 +18,8 @@
 	        server_name localhost;
 	        location / {
 	        		
-	        		auth_basic      "ojbk";   #标识
-					auth_basic_user_file /usr/local/nginx/conf/htpasswd; #用户名密码配置文件
+			auth_basic      "ojbk";   #标识
+			auth_basic_user_file /usr/local/nginx/conf/htpasswd; #用户名密码配置文件
 	                
 	                root /usr/local/static;
 	                autoindex on;               # 开启索引
@@ -41,6 +41,7 @@
 >openssl passwd ojbk
 
 	得到密文密码 
+	
 >mhbz9pgglXQT6
 
 	配置用户密码文件 
