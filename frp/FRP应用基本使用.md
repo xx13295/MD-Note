@@ -1,4 +1,4 @@
-# frp 工具的基本使用
+# frp 应用的基本使用
 
 	软件下载 https://github.com/fatedier/frp/releases
 	
