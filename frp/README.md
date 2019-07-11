@@ -6,7 +6,7 @@
 	
 [正反向代理](https://github.com/xx13295/MD-Note/blob/master/frp/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.md/)
 
-![](https://github.com/xx13295/MD-Note/blob/master/frp/img/frpjg.png)
+![](https://raw.githubusercontent.com/xx13295/MD-Note/master/frp/img/frpjg.png)
 
 
 
