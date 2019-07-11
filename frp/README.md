@@ -1,11 +1,15 @@
 # 什么是FRP？
 
-	frp全名Fast Reverse Proxy， 是一个可用于内网穿透的高性能的反向代理应用，
+	frp全名Fast Reverse Proxy， 是一个可用于内网穿透的高性能的反向代理应用
 	支持 tcp、 udp 协议，同时也为 http 和 https 应用协议提供了额外的能力，
 	主要用于解决一些内网服务没有公网ip但是却需要提供外网访问的问题。
 	
+[正反向代理](https://github.com/xx13295/MD-Note/blob/master/frp/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.md/)
+
 ![](https://github.com/xx13295/MD-Note/blob/master/frp/img/frpjg.png)
-	
+
+
+
 # 什么是内网穿透？
 
 	简单说就是内网中的一台计算机具有自己的内部IP，外网的计算机具有公共的IP，而内部IP是无法直接通过外网来访问的，
