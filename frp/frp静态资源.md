@@ -1,7 +1,8 @@
 # 使用 rfp 做静态资源
 
-	优点，可以增加用户名密码控制访问。 [当然nginx也可以]
-	缺点，页面丑的可以。
+优点，可以增加用户名密码控制访问。 当然[nginx](https://github.com/xx13295/MD-Note/blob/master/nginx/nginx%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%A2%9E%E5%8A%A0%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6.md)也可以。
+
+缺点，页面丑的可以。
 	
 ### 在原有的客户端配置增加如下配置 
 
