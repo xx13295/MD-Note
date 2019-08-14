@@ -17,3 +17,13 @@
 >[mysql] 这个标签是随便写的方便区分具体的业务，写啥都行如[ojbk] 但一定要有这个[xxx]这是规范。
 
 	这样就能使用 你公网的ip:33306 端口去访问你的内网mysql 3306端口的数据库服务了。
+
+
+
+#### 代理 web 
+
+	[web]
+	type = http
+	local_port = 8080
+	custom_domains = frp.ojbk.plus
+	
