@@ -27,6 +27,12 @@
 
 >ffmpeg
 
+若出现 一大溜  说明安装成功
+
+若出现-bash: ffmpeg: command not found  说安装失败了
+
+ 
+
 ### 5. 如果出现安装失败 
 	
 >sudo yum clean
