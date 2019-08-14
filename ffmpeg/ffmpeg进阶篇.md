@@ -54,5 +54,16 @@
 	
 	执行以下命令 不出意外  就是 按照你写的顺序开始拼接的一段新视频  newojbk3
 	ffmpeg -f concat -i d:/ojbk.txt -c copy d:/newojbk3.mp4	
+
+## 视频提取音频流视频流 除去视频中带英文字母广告信息等
+	
+	ffmpeg -y -i Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP.mkv -map 0:0 -map 0:1 -c:v h264 -c:a copy jishengchong.mp4
+	
+	加上自己的中文字幕
+	
+	ffmpeg -y -i jishengchong.mp4 -vf subtitles=PARASITE.2019.720p.HDRip.H264.AAC-NonDRM.ass jishengc.mp4
+
+	服务器后台运行 就使用 
+	nohup ffmpeg {xxx省略xxx} 1>ffmpeg.log 2>&1 &
 	
 	
