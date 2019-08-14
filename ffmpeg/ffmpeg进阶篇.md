@@ -67,3 +67,9 @@
 	nohup ffmpeg {xxx省略xxx} 1>ffmpeg.log 2>&1 &
 	
 	
+	注意 服务器 字体问题，可能导致 合成后  是框框口口口口。
+	这时候需要查看 ffmpeg 执行过程中的日志 查看是缺少什么字体文件，可以 上传相应的字体 
+	到/usr/share/fonts/dejavu
+	再
+	fc-cache -fv
+	
