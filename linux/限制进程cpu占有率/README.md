@@ -5,16 +5,20 @@
 ## 使用源码安装
 
 >wget http://downloads.sourceforge.net/cpulimit/cpulimit-1.1.tar.gz
+
 >tar -zxvf cpulimit-1.1.tar.gz
+
 >cd cpulimit-1.1
+
 >make
+
 >cp cpulimit  /usr/local/sbin/
 
-Debian / Ubuntu 用户
+	Debian / Ubuntu 用户
 
 >sudo apt-get install cpulimit
 
-centos
+	Centos
 
 >yum install cpulimit
 
