@@ -4,6 +4,8 @@
 
 ## 安装
 
+#### 方式一 
+
 >wget http://downloads.sourceforge.net/cpulimit/cpulimit-1.1.tar.gz
 
 >tar -zxvf cpulimit-1.1.tar.gz
@@ -14,7 +16,8 @@
 
 >cp cpulimit  /usr/local/sbin/
 
-	Debian / Ubuntu 用户
+#### 方式二 
+	Debian / Ubuntu
 
 >sudo apt-get install cpulimit
 
