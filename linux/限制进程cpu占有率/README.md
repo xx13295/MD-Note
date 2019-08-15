@@ -38,3 +38,6 @@
 	可以使用绝对路径限制进程的cpu利用率
 
 >cpulimit -P /usr/local/redis/bin/redis-server -l 50
+
+
+考察资料 ：https://scoutapm.com/blog/restricting-process-cpu-usage-using-nice-cpulimit-and-cgroups
