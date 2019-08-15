@@ -2,7 +2,7 @@
 
 	安装cpulimit
 
-## 使用源码安装
+## 安装
 
 >wget http://downloads.sourceforge.net/cpulimit/cpulimit-1.1.tar.gz
 
@@ -20,7 +20,7 @@
 
 	Centos
 
->yum install cpulimit
+>sudo yum install cpulimit
 
 
 ## 如何使用cpulimit?
