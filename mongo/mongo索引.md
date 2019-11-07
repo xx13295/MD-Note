@@ -30,6 +30,12 @@
 |background |boolean	|创建索引在后台运行，不会阻止其他对数据库操作	|
 |unique		|boolean	|创建唯一索引，不会出现重复的文档值			|
 |sparse		|boolean	|过滤掉null，不存在的字段				|
+|expireAfterSeconds|Integer|指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间|
+|v			|Index version|索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本|
+|weights|document	|索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。|
+|default_language	|String	|对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语|
+|language_override	|String	|对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.|
+
 	
 	
 ### 查询集合索引
