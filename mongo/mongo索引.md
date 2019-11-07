@@ -87,6 +87,7 @@
 
 >db.collection.dropIndexes() 
 
+>db.getCollection('test_a').dropIndexes() 
 	
 ### 查看查询语句是否使用索引
 
