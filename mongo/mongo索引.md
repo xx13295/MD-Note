@@ -38,7 +38,7 @@
 
 	
 	
-### 查询集合索引
+### 查询集合索引以及索引大小
 	
 >db.collection.getIndexes()
 
@@ -66,6 +66,13 @@
 	
 	一个是主键id 索引，另一个是我们手动创建的title索引
 	
+	
+		
+ 	
+ 	查看索引大小
+ 	
+>db.getCollection('test_a').totalIndexSize()
+
 ### 删除索引
 
 	删除指定的索引
