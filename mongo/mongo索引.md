@@ -10,6 +10,30 @@
 		
 ###  建立索引
 
+
+假如我们有如下数据：
+	{
+	    "_id" : ObjectId("5dc375c0acbff831b828a906"),
+	    "_class" : "plus.ojbk.web.controller.test",
+	    "title" : "adidas 阿迪 T 恤 10010-20",
+	    "catalog" : "运动",
+	    "brand" : "阿迪达斯",
+	    "price" : 199,
+	    "specs" : [ 
+	        {
+	            "name" : "材质",
+	            "value" : "涤纶"
+	        }, 
+	        {
+	            "name" : "上市",
+	            "value" : "2019 秋季"
+	        }
+	    ]
+	}
+
+
+
+
 >db.collection.createIndex(key, options)
 
 
