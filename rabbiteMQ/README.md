@@ -69,8 +69,11 @@
 	管理界面 端口： 15672
 	server间内部通信 端口：25672
 	erlang发现 端口：4369
+	##https://github.com/rabbitmq/rabbitmq-server/blob/master/docs/rabbitmq.conf.example
 	
 	
->vi /etc/rabbitmq/rabbitmq.config
+>cp /usr/share/doc/rabbitmq-server-3.6.5/rabbitmq.config.example /etc/rabbitmq/
 
-	没有就 去这里 拷贝一份 https://github.com/rabbitmq/rabbitmq-server/blob/master/docs/rabbitmq.conf.example
+>mv rabbitmq.config.example rabbitmq.config
+
+>vi /etc/rabbitmq/rabbitmq.config
