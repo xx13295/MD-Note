@@ -37,3 +37,12 @@
 
 
 ##  好了 ，这样就拥有了免费的ssl 证书 三个月一次 他会自动 帮你重新 更新证书的
+
+
+## 2020 / 02 /10  证书无法更新问题
+
+	需要 更新一下 脚本 不然一直卡在 Getting domain auth token for each domain
+	
+> /usr/local/acme.sh/acme.sh --upgrade
+
+	然后重新执行 更新脚本的命令
