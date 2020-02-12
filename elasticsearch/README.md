@@ -86,10 +86,14 @@
 	可能会出现以下问题
 	
 [1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65535]
+
 [2]: max number of threads [1024] for user [elasticsearch] is too low, increase to at least [4096]
+
 [3]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
 [4]: system call filters failed to install; check the logs and fix your configuration or 
 disable system call filters at your own risk
+
 [5]: the default discovery settings are unsuitable for production use; at least one of 
 [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
 	
@@ -98,15 +102,15 @@ disable system call filters at your own risk
 	
 >vi /etc/security/limits.d/90-nproc.conf
 	将原来的1024 改为 4096 保存
->*          soft    nproc     4096
+'*          soft    nproc     4096'
 
 >vi /etc/security/limits.conf
 	 在底下增加 4行 
 
->*               soft    nofile          65536
->*               hard    nofile          65536
->*               soft    nproc           4096
->*               hard    nproc           4096
+'*               soft    nofile          65536'
+'*               hard    nofile          65536'
+'*               soft    nproc           4096'
+'*               hard    nproc           4096'
 
 >vi /etc/sysctl.conf
 	增加 vm.max_map_count配置 
