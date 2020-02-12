@@ -13,7 +13,7 @@
 
 ### 删除原文件
 
->rm jdk-8u101-linux-x64.tar.gz
+>rm jdk-linux-x64.tar.gz
 
 ### 修改/etc/profile文件(注意版本)
 
