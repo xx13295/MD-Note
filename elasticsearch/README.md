@@ -102,15 +102,15 @@ disable system call filters at your own risk
 	
 >vi /etc/security/limits.d/90-nproc.conf
 	将原来的1024 改为 4096 保存
-'*          soft    nproc     4096'
+	*          soft    nproc     4096
 
 >vi /etc/security/limits.conf
 	 在底下增加 4行 
 
-'*               soft    nofile          65536'
-'*               hard    nofile          65536'
-'*               soft    nproc           4096'
-'*               hard    nproc           4096'
+	*               soft    nofile          65536
+	*               hard    nofile          65536
+	*               soft    nproc           4096
+	*               hard    nproc           4096
 
 >vi /etc/sysctl.conf
 	增加 vm.max_map_count配置 
