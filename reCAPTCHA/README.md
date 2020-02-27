@@ -3,9 +3,9 @@
 
 	我想大家肯定都见过这样的验证码挺烦的 还得疯狂选图片才能继续下一步。
 	
-[image](https://github.com/xx13295/wxm/blob/master/images/o.png?raw=true)
+![image](https://github.com/xx13295/MD-Note/blob/master/reCAPTCHA/img/yanzhengma-1.png?raw=true)
 	
-[image](https://github.com/xx13295/wxm/blob/master/images/o.png?raw=true)
+![image](https://github.com/xx13295/MD-Note/blob/master/reCAPTCHA/img/yanzhengma-2.png?raw=true)
 	
 	
 	这是谷歌的reCAPTCHA v2 验证码
@@ -34,9 +34,9 @@
 	
 	https://www.google.com/recaptcha/admin/create 
 	
-[image](https://github.com/xx13295/wxm/blob/master/images/o.png?raw=true)
+![image](https://github.com/xx13295/MD-Note/blob/master/reCAPTCHA/img/yanzhengma-3.png?raw=true)
 
-[image](https://github.com/xx13295/wxm/blob/master/images/o.png?raw=true)
+![image](https://github.com/xx13295/MD-Note/blob/master/reCAPTCHA/img/yanzhengma-4.png?raw=true)
 
 	2个密钥，一个是在客户端（HTML）使用，一个是在服务端使用
 
