@@ -10,7 +10,7 @@
      * @author wxm
      * @param mac 地址 ff:ff:ff:ff:ff:01
      * @param num 整数为加 负数为减
-     * @return
+     * @return ff:ff:ff:ff:ff:0f
      */
     public static String getMac(String mac, int num) {
         mac = checkMac(mac.replace(":",""));
