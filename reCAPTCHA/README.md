@@ -41,6 +41,7 @@
 	2个密钥，一个是在客户端（HTML）使用，一个是在服务端使用
 
 #### 前端代码
+例子1.
 
 ```
 
@@ -84,7 +85,54 @@
 	</html>
 	
 ```	
+例子2.
 
+```
+
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>谷歌ReCaptcha</title>
+	        <script src="https://www.recaptcha.net/recaptcha/api.js" defer></script>
+		</head>
+		<body>
+	         <div class="g-recaptcha" data-sitekey="6Ldctd****jU4******IGRsh"></div>
+	         <button style="width: 200px; height: 50px;">点击我完成验证</button>
+	         <h3>验证结果</h3>
+	         <div>
+	            <pre id="response">
+	
+	            </pre>
+	         </div>
+		<script type="text/javascript">
+	        window.onload = () => {
+	            document.querySelector('button').addEventListener('click', () => {
+	                // 获取验证码的token
+	                const token = grecaptcha.getResponse();
+	                if (!token){
+	                    alert('请先点击，“进行人机身份验证”');
+	                    return;
+	                }
+	                fetch('/validate?token=' + token, {
+	                    method: 'GET'
+	                }).then(response => {
+	                    if (response.ok) {
+	                        response.text().then(message => {
+	                           // 请求成功，重置验证码
+	                           grecaptcha.reset();
+	                           document.querySelector('#response').innerHTML = message;
+	                        });
+	                    }else {
+	                        alert('请求异常');
+	                    }
+	                })
+	            });
+	        }
+		</script>
+		</body>
+	</html>
+
+```
 #### 服务端代码
 
 ```
