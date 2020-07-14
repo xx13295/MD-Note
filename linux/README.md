@@ -49,17 +49,16 @@ CentOS
 	原作者的下载链接
 >wget --no-check-certificate -qO InstallNET.sh 'https://moeclub.org/attachment/LinuxShell/InstallNET.sh' && chmod a+x InstallNET.sh	
 	
-	小明 的下载链接
+	当时备份的文件
 
->wget --no-check-certificate -qO InstallNET.sh 'https://static.ojbk.plus/shell/InstallNET.sh' && chmod a+x InstallNET.sh	
+>wget --no-check-certificate -qO InstallNET.sh 'https://raw.githubusercontent.com/xx13295/MD-Note/master/linux/InstallNET.sh' && chmod a+x InstallNET.sh	
 	
-我的下载链接是我安装完后，当时的 [脚本](https://static.ojbk.plus/shell/InstallNET.sh/)
 
-{https://static.ojbk.plus/shell/InstallNET.sh} 备份了一下
+
 
 原作者的链接脚本可能会实时更新的以后会出现更多的新功能也可能修复某一些bug
 
- 当然也不能保证以后会不会加入恶意代码啥的 毕竟在网上 防人之心不可无
+ 当然也可能跑路 无法下载 
 
 	 默认安装
 	
@@ -75,7 +74,7 @@ CentOS
 #### 警告
 
 	反正别人造好的轮子 用就完事了 用就代表相信作者 ， 
-	当然也要承担一定的风险（ 比如 被加入恶意代码啥的） 。
+	当然也要承担一定的风险（ 比如  dd包 存在安全隐患 ） 。
 	不相信作者就别用！
 
 
