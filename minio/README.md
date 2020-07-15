@@ -1,3 +1,7 @@
+# 注意事项
+	
+	可能不适合新手观看 哈哈 以下内容属于 随笔记录 
+
 ## 无脑docker 版
 
 docker run  -itd -p 9000:9000 --name minio \
