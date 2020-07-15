@@ -59,6 +59,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 保存
 
+ 当然你要去https://github.com/minio/minio 下一份go的源码
 
 	#set CGO_ENABLED=0
 	set GOOS=linux
