@@ -1,6 +1,6 @@
 # 1.依赖 
 	
-	 	<dependency>
+	 <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>7.1.0</version>
