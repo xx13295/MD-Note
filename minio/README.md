@@ -12,19 +12,6 @@ docker run  -itd -p 9000:9000 --name minio \
 minio/minio server /data
 
 
-wget https://dl.min.io/client/mc/release/linux-amd64/mc
-chmod +x mc
-
-ln -s /root/mc /usr/bin/mc
-
-
-mc config host add minio http://47.240.22.174:9000 QW544GDG67AHD XH584GHGSFGIK --api S3v4
-
-
-配置策略命令查看: mc policy
-
-mc  policy  set  download  minio/image
-
 ######
 export MINIO_ACCESS_KEY=admin
 export MINIO_SECRET_KEY=12345678
@@ -71,5 +58,74 @@ export PATH=$PATH:/usr/local/go/bin
 	 ###  毕竟go被墙了
 	export GOPROXY=https://goproxy.io
 	go build main.go
+
+
+
+### mc 客户端
+
+
+	wget https://dl.min.io/client/mc/release/linux-amd64/mc
+	chmod +x mc
+	
+	ln -s /root/sf/mc /usr/bin/mc
+	
+	
+	
+	mc config host add minio http://ip:port QW544GDG67AHD XH584GHGSFGIK --api S3v4
+	
+	
+	配置策略命令查看: mc policy
+	
+	
+ 设置  bucket 匿名访问 即开放权限    （image 为bucket， 前面的minio 为配置文件中的别名）
+具体位置  /root/sf/.mc/config.json	
+
+	mc  policy  set  download  minio/image
+
+
+```
+
+	{
+	        "version": "9",
+	        "hosts": {
+	                "gcs": {
+	                        "url": "https://storage.googleapis.com",
+	                        "accessKey": "YOUR-ACCESS-KEY-HERE",
+	                        "secretKey": "YOUR-SECRET-KEY-HERE",
+	                        "api": "S3v2",
+	                        "lookup": "dns"
+	                },
+	                "local": {
+	                        "url": "http://localhost:33333",
+	                        "accessKey": "*****",
+	                        "secretKey": "*****",
+	                        "api": "S3v4",
+	                        "lookup": "auto"
+	                },
+	                "minio": {
+	                        "url": "http://ip:port",
+	                        "accessKey": "QW544GDG67AHD",
+	                        "secretKey": "XH584GHGSFGIK",
+	                        "api": "S3v4",
+	                        "lookup": "auto"
+	                },
+	                "play": {
+	                        "url": "https://play.min.io",
+	                        "accessKey": "Q3AM3UQ867SPQQA43P2F",
+	                        "secretKey": "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG",
+	                        "api": "S3v4",
+	                        "lookup": "auto"
+	                },
+	                "s3": {
+	                        "url": "https://s3.amazonaws.com",
+	                        "accessKey": "YOUR-ACCESS-KEY-HERE",
+	                        "secretKey": "YOUR-SECRET-KEY-HERE",
+	                        "api": "S3v4",
+	                        "lookup": "dns"
+	                }
+	        }
+	}
+
+```
 
 
