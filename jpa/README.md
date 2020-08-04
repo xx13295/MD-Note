@@ -44,4 +44,8 @@
 		
 		* 会在目录: target/generated-sources/java 生成与entity同包的查询类(类名都添加了Q字符)  【由上方 maven plugin 中定义的目录】
 
+
+### 相关代码
+
+	https://github.com/xx13295/springboot-querydsl
 	
