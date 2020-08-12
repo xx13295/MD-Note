@@ -81,6 +81,29 @@
  
  	//yum remove ruby* 
  	
-		
+
+### 安装pg Gem时找不到libpq-fe.h头文件？
+
+	尝试安装libpq-dev或其他相当的东西
+	
+	对于Ubuntu系统：
+	
+	sudo apt-get install libpq-dev
+	
+	在Red Hat Linux（RHEL）系统上：
+	
+	yum install postgresql-devel
+	
+	对于Mac Homebrew：
+	
+	brew install postgresql
+	
+	对于Mac MacPorts PostgreSQL：
+	
+	gem install pg -- --with-pg-config=/opt/local/lib/postgresql[version number]/bin/pg_config
+	
+	对于OpenSuse：
+
+	zypper in postgresql-devel
 	
 	
