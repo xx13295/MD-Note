@@ -67,9 +67,7 @@
 	
 	ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux]
  	
- 	删除 原来的 2.0版本
  	
- 	yum remove ruby* 
  	
  		
 ### 安装bundler
@@ -79,7 +77,10 @@
 	gem install --local bundler-2.1.4.gem
 	
 	
-	
+### 删除 
+ 
+ 	//yum remove ruby* 
+ 	
 		
 	
 	
