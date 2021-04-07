@@ -10,4 +10,4 @@
 
 ~~已过时~~
 
-请查阅 https://github.com/ButterAndButterfly/GithubHost
+请查阅： https://github.com/ButterAndButterfly/GithubHost
