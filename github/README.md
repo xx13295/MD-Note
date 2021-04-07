@@ -6,3 +6,8 @@
 	192.30.253.112 github.com
 	
 	199.232.4.133 raw.githubusercontent.com
+
+
+~~已过时~~
+
+请查阅 https://github.com/ButterAndButterfly/GithubHost
