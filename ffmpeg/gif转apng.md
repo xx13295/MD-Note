@@ -15,7 +15,7 @@
 
 
 
->ffmpeg.exe -y -i "GIF.gif" -plays 0  -vf "setpts=PTS-STARTPTS, hqdn3d=1.5:1.5:6:6" -r 20 232.apng
+>ffmpeg.exe -y -i "GIF.gif" -plays 0  -vf "setpts=PTS-STARTPTS, hqdn3d=1.5:1.5:6:6, scale=300:300" -r 20 232.apng
 
 
     转完改下后缀 png 完事
