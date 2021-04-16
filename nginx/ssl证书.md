@@ -46,3 +46,48 @@
 > /usr/local/acme.sh/acme.sh --upgrade
 
 	然后重新执行 更新脚本的命令
+
+
+
+
+
+
+### 自签名证书 
+
+1.创建私钥
+
+>openssl genrsa -out ojbk.key 1024
+
+回车之后就可以得到一个私钥ojbk.key
+
+2.创建证书签名请求
+
+>openssl req -new -key ojbk.key -out ojbk.csr
+
+回车之后会有一堆等着你输入的东西，直接一路回车。唯独一个Common Name要填成对应网站的IP或者域名：
+
+Common Name (e.g. server FQDN or YOUR name) []:192.168.0.15
+
+上面我直接填了机器的IP：192.168.0.15
+
+3.创建自签名证书
+
+>openssl x509 -req -in ojbk.csr -signkey ojbk.key -out ojbk.crt
+
+回车后会得到一个自签名证书ojbk.crt
+
+
+使用
+```aidl
+
+    http {
+    ...
+        server {
+        listen      443 ssl;
+        ssl_certificate         /usr/local/ssl/ojbk.crt;
+        ssl_certificate_key     /usr/local/ssl/ojbk.key;
+    ...
+    }
+    }
+
+```
