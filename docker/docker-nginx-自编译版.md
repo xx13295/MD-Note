@@ -53,6 +53,8 @@ CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
 
 >docker build -t ojbk:nginx1.18 .
 
+    经过漫长的等待....
+
 4.查看镜像 获取 id
 
 >docker images
