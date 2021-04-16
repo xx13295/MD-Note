@@ -74,7 +74,11 @@ Common Name (e.g. server FQDN or YOUR name) []:192.168.0.15
 
 >openssl x509 -req -in ojbk.csr -signkey ojbk.key -out ojbk.crt
 
+
 回车后会得到一个自签名证书ojbk.crt
+
+上面的有效期只有1个月 加上 -days 3650 整到10年
+>openssl x509 -req -in ojbk.csr -out ojbk.crt -signkey ojbk.key -days 3650
 
 
 使用
