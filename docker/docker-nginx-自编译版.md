@@ -60,6 +60,8 @@ CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
 5. 获得 9413ab666ceb 取前四位即可
 
 
+当然 这里要 先搞一份nginx 配置文件到 /disk1/dockerContainer/nginx/conf/目录下
+
 ```aidl
 
 docker run --privileged=true -d -p 10130:80 -p 10223:443 --name nginx1.18 \
