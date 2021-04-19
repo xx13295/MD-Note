@@ -65,7 +65,7 @@ message xxx {
 
 
 Message.proto 为你的.proto文件
-–java_out=“你要输出的位置”    
+--java_out=“你要输出的位置”    
 ./ 为当前目录
 
 
