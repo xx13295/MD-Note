@@ -1,4 +1,4 @@
-# docker-mysql8.0.23
+#  docker-mysql8.0.23
 
 1.拉取mysql 镜像
 
@@ -49,7 +49,7 @@ docker run --restart=on-failure:3 --privileged=true -d \
 -v /disk1/dockerContainer/mysql/conf/my.cnf:/etc/mysql/my.cnf \
 -v /disk1/dockerContainer/mysql/data:/var/lib/mysql \
 -v /disk1/dockerContainer/mysql/logs:/logs \
--p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 cbe8
+-p 10131:3306 -e MYSQL_ROOT_PASSWORD=123456 cbe8
 
 
 ```
