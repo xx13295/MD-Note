@@ -1,4 +1,4 @@
-# docker-rabbiteMq
+# docker-rabbitMq
 
 1.拉取rabbiteMq 镜像
 
