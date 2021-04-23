@@ -30,7 +30,7 @@ management.tcp.port = 15672
 	创建完后再将其改为true
 
 
-4. 启动redis
+4. 启动rabbitMq
 
 ```aidl
 
