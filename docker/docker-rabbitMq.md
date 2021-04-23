@@ -19,7 +19,7 @@ loopback_users.guest = true
 listeners.tcp.default = 5672
 #管理界面端口
 management.tcp.port = 15672
-~                            
+                           
 
 
 ```
