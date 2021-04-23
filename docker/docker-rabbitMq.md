@@ -1,6 +1,6 @@
-#  docker-rabbiteMq
+#  docker-rabbitMq
 
-1.拉取rabbiteMq 镜像
+1.拉取rabbitMq 镜像
 
 >docker pull rabbitmq:3.8.14
 
