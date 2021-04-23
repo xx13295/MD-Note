@@ -1,4 +1,4 @@
-#  docker-nginx
+# 服务器安装 docker-nginx
 
 需要准备 Dockerfile
 
@@ -9,7 +9,6 @@
 FROM centos:7
 MAINTAINER wxm i@ojbk.plus
 
-#RUN	yum clean all
 #RUN	yum makecache
 
 # 准备环境 安装 wget
@@ -34,9 +33,6 @@ RUN cd nginx-1.18.0 && ./configure --prefix=/usr/local/nginx --with-http_stub_st
 # 删除临时文件
 RUN rm -rf nginx-1.18.0
 
-# 加载本地Nginx配置
-# ADD /disk1/dockerContainer/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
-
 # 运行Nginx
 RUN /usr/local/nginx/sbin/nginx
 
@@ -50,39 +46,33 @@ CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
 
 ```
 
+注意末尾有个 .    
 
->docker build -t ojbk:nginx1.18 .
+>docker build -t dhy:nginx1.18 .
 
-    经过漫长的等待....
-
-4.查看镜像 获取 id
+经过漫长的等待
 
 >docker images
 
-5. 获得 9413ab666ceb 取前四位即可
-
+就可以看到 nginx 已经打包成镜像了
 
 当然 这里要 先搞一份nginx 配置文件到 /disk1/dockerContainer/nginx/conf/目录下
 
-```aidl
+然后执行
 
 docker run --privileged=true -d -p 10130:80 -p 10223:443 --name nginx1.18 \
 -v /disk1/dockerContainer/nginx/html:/usr/local/nginx/html \
 -v /disk1/dockerContainer/nginx/conf/nginx.conf:/usr/local/nginx/conf/nginx.conf \
 -v /disk1/dockerContainer/nginx/logs:/usr/local/nginx/logs 9413
 
-```
-
 
 进入 容器 
 
->docker exec -it nginx1.18 /bin/bash
+docker exec -it nginx1.18 /bin/bash
 
 修改一下系统时间
 
->ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+echo "Asia/Shanghai" > /etc/timezone
 
->echo "Asia/Shanghai" > /etc/timezone
 
-
-重启一波容器 这样nginx 的日志打印时间就正常了
