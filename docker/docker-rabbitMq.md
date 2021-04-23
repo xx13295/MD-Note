@@ -1,6 +1,6 @@
-# docker-rabbitMq
+#  docker-rabbiteMq
 
-1.拉取rabbitMq 镜像
+1.拉取rabbiteMq 镜像
 
 >docker pull rabbitmq:3.8.14
 
@@ -19,7 +19,7 @@ loopback_users.guest = true
 listeners.tcp.default = 5672
 #管理界面端口
 management.tcp.port = 15672
-                           
+                        
 
 
 ```
@@ -30,12 +30,12 @@ management.tcp.port = 15672
 	创建完后再将其改为true
 
 
-4. 启动rabbitMq
+4. 启动rabbitmq
 
 ```aidl
 
 
-docker run --restart=on-failure:3 --privileged=true -d --name rabbitmq3.8 -p 5672:5672 -p 15672:15672 \
+docker run --restart=on-failure:3 --privileged=true -d --name rabbitmq3.8 -p 10133:5672 -p 10134:15672 \
 -v /disk1/dockerContainer/rabbitmq/data:/var/lib/rabbitmq \
 -v /disk1/dockerContainer/rabbitmq/log:/var/log/rabbitmq \
 -v /disk1/dockerContainer/rabbitmq/conf:/etc/rabbitmq f83a
