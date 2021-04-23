@@ -76,3 +76,9 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" > /etc/timezone
 
 
+
+
+## nginx 资料
+
+https://github.com/xx13295/MD-Note/tree/master/nginx
+
