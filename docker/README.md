@@ -57,6 +57,8 @@
 //查看容器启动失败日志
 >docker logs -f -t --tail 20 614f5d8942ef
 
+//查询容器信息
+> docker inspect 614f5d8942ef
 
 ## Hello Docker
 
