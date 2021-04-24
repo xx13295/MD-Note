@@ -54,6 +54,10 @@
 >service docker start
 
 
+//查看容器启动失败日志
+>docker logs -f -t --tail 20 614f5d8942ef
+
+
 ## Hello Docker
 
 //创建一个BusyBox，它是一个最小的Linux系统，它提供了该系统的主要功能，不包含一些与GNU相关的功能和选项。
