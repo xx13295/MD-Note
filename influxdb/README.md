@@ -97,7 +97,7 @@
 	开启 鉴权 
 	
 	enabled = true
-		
+	auth-enabled = true
 	下次 在用 客户端连接：
 	
 > influx.exe -username root -password root
