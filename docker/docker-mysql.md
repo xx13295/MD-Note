@@ -24,6 +24,10 @@ pid-file        = /var/run/mysqld/mysqld.pid
 socket          = /var/run/mysqld/mysqld.sock
 datadir         = /var/lib/mysql
 
+#slow_query_log  = 1
+
+sql_mode        = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTIO
+
 character_set_server = utf8mb4
 collation_server = utf8mb4_bin
 #
