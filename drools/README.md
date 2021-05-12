@@ -31,21 +31,21 @@
 
 1、术语解释
 
-`*` Rule：一条规则可以看作是IF…THEN…语句块，或者一个简单的IPO（即输入、处理和输出），描述了一组输入，一组判断和一组输出；
+* Rule：一条规则可以看作是if else 一组判断和一组输出
 
-`*` RuleBase: RuleBase包含一个或多个规则包，它们已经被校验和编译完成，是可以序列化的
+* RuleBase: RuleBase包含一个或多个规则包，它们已经被校验和编译完成，是可以序列化的
 
-`*` Package: 规则包，是规则以及其它相关结构的一个集合，包必须有一个名称空间，并且使用标准的java约定进行命名
+* Package: 规则包，是规则以及其它相关结构的一个集合，包必须有一个名称空间，并且使用标准的java约定进行命名
 
-`*` WorkingMemory: 用户工作区，包含用户的数据和相关Rule的引用
+* WorkingMemory: 用户工作区，包含用户的数据和相关Rule的引用
 
-`*` Facts: Facts就是规则中用到的输入，Facts可以是任何规则可以存取的Java对象,规则引擎完全不会克隆对象，它仅仅是保存对对象的一个引用/指针
+* Facts: Facts就是规则中用到的输入，Facts可以是任何规则可以存取的Java对象,规则引擎完全不会克隆对象，它仅仅是保存对对象的一个引用/指针
 
 2、规则文件详解
 
-    规则文件通常是以drl扩展名结尾。
+    目前市面上常用的drools规则文件通常是以  .drl 扩展名结尾 
     
-    在一个drl文件中可以包含多个规则，函数等等，DRL是简单的text文件格式。
+    在一个drl文件中可以包含多个规则，函数等等。
 
 规则文件的构成：
 
@@ -53,19 +53,19 @@
     
     imports   //导入java包
     
-    globals   //定义全局变量，如 global java.util.List myGlobalList;
+    globals   //定义全局变量，如 global java.util.List myGlobalList
     
     functions  //定义函数
     
     rules   //一系列的规则
 
 规则的构成:
-    
-    package "packageName";
+
+    package "packageName"
     
     imports com.xxx.Xxx
     
-    rule "ruleName";
+    rule "ruleName"
         attributes
     when
         LHS
@@ -74,7 +74,7 @@
     end
 
 说明：
-    
+
     LHS是规则的条件部分，可以定义变量
 
     RHS是允许Java语义代码，RHS中的多条语句实质上是一个规则，只有满足全部语句才符合规则
@@ -130,7 +130,7 @@ RHS部分可以执行相应的动作
 
 其中 `update($employee)` 的作用是更新工作内存中的数据，并让相关的规则重新匹配。 （要避免死循环）
 
-所以再attributes中 添加了 `no-loop true` 
+所以再attributes中 添加了 `no-loop true`
 
 如果员工的工资原来为8000 执行了这个规则 没有添加 `no-loop true` 那么会导致循环加薪直到 工资变成10100
 
