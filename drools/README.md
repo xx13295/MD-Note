@@ -59,6 +59,8 @@
     
     rules   //一系列的规则
 
+    querys	//一系列查询
+
 规则的构成:
 
     package "packageName"
@@ -72,6 +74,15 @@
     then
         RHS
     end
+
+查询的构成
+
+    query "queryName"
+    
+    LHS
+    
+    end
+
 
 说明：
 
@@ -146,3 +157,8 @@ RHS部分可以执行相应的动作
     规则引擎完全不会克隆对象，它仅仅是保存对对象的一个引用/指针
     即，在规则定义中对fact的修改，就是对代码中fact对象的修改。
     也即，规则的根本目的是产生一个供使用的输出结果，即修改后的JavaBean
+
+
+### 学习资料
+
+[完整代码传送门](https://github.com/xx13295/springboot-drools-redis)
