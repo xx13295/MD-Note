@@ -4,7 +4,11 @@
 
 >mc admin policy list local
 
-    创建一个新策略
+    查看readwrite格式
+
+>mc admin policy info local readwrite
+
+   可以仿照readwrite 创建一个新策略
 
 > vi minio-test.json
 
