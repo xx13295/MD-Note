@@ -72,7 +72,7 @@ Not found cache TTL: 修改为 288000
 
 保存完事 以此类推
 
-```aidl
+```
 
 1. aliyun
 http://maven.aliyun.com/nexus/content/groups/public
@@ -118,7 +118,7 @@ http://nexus3-host:8081/#admin/repository/repositories:maven-public
     如果没有配置默认使用ip即可
     
 
-```aidl
+```
 
   <servers>
     <server>
@@ -209,7 +209,7 @@ http://nexus3-host:8081/#admin/repository/repositories:maven-public
 
 7. maven 项目的 pom文件中加入 
 
-```aidl
+```
 
  <distributionManagement>
         <repository>

@@ -12,7 +12,7 @@
 3. 创建 my.cnf 文件
 >vi my.cnf
 
-```aidl
+```
 
 [client]
 
@@ -46,7 +46,7 @@ symbolic-links=0
 
 5. 获得 cbe8815cbea8 取前四位即可 并启动mysql 
 
-```aidl
+```
 
 docker run --restart=on-failure:3 --privileged=true -d \
 --name mysql8.0.23 \

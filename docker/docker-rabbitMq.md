@@ -11,7 +11,7 @@
 
 3. 编辑 vi /disk1/dockerContainer/rabbitmq/conf/rabbitmq.conf 
 
-```aidl
+```
 
 #限制guest用户远程访问 true禁止 false开启
 loopback_users.guest = true
@@ -32,7 +32,7 @@ management.tcp.port = 15672
 
 4. 启动rabbitmq
 
-```aidl
+```
 
 
 docker run --restart=on-failure:3 --privileged=true -d --name rabbitmq3.8 -p 10133:5672 -p 10134:15672 \

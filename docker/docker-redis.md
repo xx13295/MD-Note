@@ -13,7 +13,7 @@
 
 4. 启动redis
 
-```aidl
+```
 
 docker run --restart=on-failure:3 --privileged=true -p 6379:6379 --name redis5.0.5 -v /disk1/dockerContainer/redis/redis.conf:/etc/redis/redis.conf -v /disk1/dockerContainer/redis/data:/data -d redis:5.0.5 redis-server /etc/redis/redis.conf --appendonly yes
 

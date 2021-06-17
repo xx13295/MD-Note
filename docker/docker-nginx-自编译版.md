@@ -4,7 +4,7 @@
 
 >vi Dockerfile
 
-```aidl
+```
 
 FROM centos:7
 MAINTAINER wxm i@ojbk.plus
