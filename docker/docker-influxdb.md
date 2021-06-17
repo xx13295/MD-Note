@@ -70,6 +70,10 @@ vi influxdb.conf
 
 >create user "root" with password 'root' with ALL PRIVILEGES
 
+修改密码
+
+>SET PASSWORD FOR <username> = '<password>'
+
 然后把配置文件 auth-enabled = true 
 
 
