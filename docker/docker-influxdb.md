@@ -35,6 +35,8 @@ influxdb:1.8.2
 
 ```
 
+>setfacl -m u:username:rwx -R /disk1/dockerContainer/influxdb
+
 因此 手动 在/disk1/dockerContainer/influxdb/databases 下 创建
 
 mv data  meta  wal
