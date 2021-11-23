@@ -18,7 +18,7 @@
 	export Ali_Key="dsadhasdkjaskdjsds"
 	export Ali_Secret="dsfhsfsfksfsldfsfds"
 
-#### 填写自己的域名
+#### 填写自己的域名生成证书
 	acme.sh --issue --dns dns_ali -d ojbk.plus -d *.ojbk.plus
 	
 #### 在证书生成目录执行
@@ -47,7 +47,17 @@
 
 	然后重新执行 更新脚本的命令
 
+# 2021 / 11 / 23 证书由原来的Let’s Encrypt变成了ZeroSSL
 
+    由于证书过期了 本能的使用了上门的更新脚本命令 -upgrade
+    更新后发现 acme 默认证书已经换成了 ZeroSSL
+
+    根据提示直接 输入以下命令
+    acme.sh  --register-account  -m myemail@example.com --server zerossl
+
+    myemail@example.com 为你邮箱 随便填都行。
+
+    然后重复执行一遍上文的开头的命令即可。
 
 
 
@@ -83,7 +93,7 @@ Common Name (e.g. server FQDN or YOUR name) []:192.168.0.15
 
 
 使用
-```aidl
+```
 
     http {
     ...
