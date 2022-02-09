@@ -1,7 +1,20 @@
 # rclone 迁移minio数据
 
+
+两台机器的时区及时间要保持一致，最后进行迁移之前，两台机器的时间进行校准。
+
+```
+centos 7设置时区
+timedatectl set-timezone Asia/Shanghai
+#时间同步
+ntpdate ntp.aliyun.com
+```
+
 >curl https://rclone.org/install.sh | sudo bash
 
+rclone config
+按照提示一步步，输入相应配置，即可。生成的文件位于：/root/.config/rclone目录下。
+也可以直接 编辑如下文件
 
 > vi /root/.config/rclone/rclone.conf
 
