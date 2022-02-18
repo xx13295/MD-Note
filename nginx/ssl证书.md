@@ -10,8 +10,20 @@
 
 ### 执行以下命令 
 
-	curl https://get.acme.sh | sh	
-	source ~/.bashrc
+<s>	curl https://get.acme.sh | sh </s>
+
+my@example.com为你的邮箱
+
+>curl https://get.acme.sh | sh -s email=my@example.com
+
+刷新环境变量
+
+>source ~/.bashrc
+
+
+或者从github安装
+
+>wget -O - https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh | sh -s -- --install-online -m  my@example.com
 
 #### 导入阿里云后台的密钥 [获取key](https://ak-console.aliyun.com/#/accesskey/)
 
@@ -22,17 +34,38 @@
 	acme.sh --issue --dns dns_ali -d ojbk.plus -d *.ojbk.plus
 	
 #### 在证书生成目录执行
-	acme.sh --installcert -d ojbk.plus -d *.ojbk.plus  \
+```
+
+acme.sh --installcert -d ojbk.plus -d *.ojbk.plus  \
 	--keypath       /usr/local/ssl/ojbk/ojbk.plus.key  \
 	--fullchainpath /usr/local/ssl/ojbk/ojbk.plus.pem
+
+```
 	
+如果有配置nginx脚本可以自动重载ssl
+
+```
+acme.sh --installcert -d ojbk.plus -d *.ojbk.plus  \
+	--keypath       /usr/local/ssl/ojbk/ojbk.plus.key  \
+	--fullchainpath /usr/local/ssl/ojbk/ojbk.plus.pem \
+	--reloadcmd     "service nginx force-reload"
+```
+
+
+	
+
+
+
 	//这样就会把key和pem生成到指定的目录   
 	
-	当然 首先 你 你先 进入 到 usr/local/    使用 mkdir 命令创建文件夹 
+	当然 首先 你先 进入 到 usr/local/    使用 mkdir 命令创建文件夹 
 	创建 ssl 文件 夹、再 进入ssl文件夹中 创建ojbk 文件夹 
 	注意 将 权限修改一下 
 	修改文件的所有者和组 【组:用户】
-	chown -R ojbk:ojbk /file  
+	chown -R ojbk:ojbk ssl  
+	
+	或者使用 sudo setfacl -m u:ojbk:rwx -R ssl/  
+	设定ojbk用户对ssl 文件夹拥有rwx权限
 
 
 
@@ -60,6 +93,14 @@
     然后重复执行一遍上文的开头的命令即可。
 
 
+<s>继续用原来的配置的方法</s>
+
+配置文件里删掉最后一行的
+
+Le_API='https://acme.zerossl.com/v2/DV90' 
+
+再执行
+>acme.sh --set-default-ca --server letsencrypt
 
 
 ### 自签名证书 
