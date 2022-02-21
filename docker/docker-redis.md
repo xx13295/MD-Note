@@ -1,5 +1,21 @@
 # docker-redis
 
+## redis 6.2.6
+
+请参照下面的5.0.5 步骤
+ 
+```
+docker run --restart=on-failure:3 --privileged=true -d \
+--name redis6.2.6 \
+-v /disk1/dockerContainer/redis/redis.conf:/etc/redis/redis.conf \
+-v /disk1/dockerContainer/redis/data:/data \
+-v /etc/localtime:/etc/localtime \
+-p 6379:6379 redis:6.2.6 redis-server /etc/redis/redis.conf --appendonly yes
+
+```
+
+
+
 1.拉取redis 镜像
 
 >docker pull redis:5.0.5
@@ -29,3 +45,5 @@ docker run --restart=on-failure:3 --privileged=true -p 6379:6379 --name redis5.0
 2.停止容器
 
 >docker stop redis5.0.5
+
+
