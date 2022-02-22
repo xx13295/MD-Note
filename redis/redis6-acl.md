@@ -18,7 +18,8 @@
 >acl list
 
 创建mike用户密码为123456仅增对name开头的键有+xx的权限
->acl setuser mike on >123456 ~name* +get +getbit +ttl +scan +set +info +type +ping +setbit
+具体可以用 acl cat 查看 (命令的合集就是 +@xx ）
+>acl setuser mike on >123456 ~name* +@bitmap +select +get +ttl +scan +set +info +type +ping +expire
 
 创建jake用户密码为123456 拥有全部权限
 >acl setuser jake on >123456 +@all ~*
