@@ -48,3 +48,8 @@
 >acl genpass
 
 >acl genpass 64
+
+
+## 更多 
+
+https://redis.io/commands/acl-cat
