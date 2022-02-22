@@ -1,5 +1,9 @@
 # redis安装
 
+### 2022年 已全面拥抱docker 请移步docker教程查阅
+
+    https://github.com/xx13295/MD-Note/blob/master/docker/docker-redis.md
+
 ### 下载redis
 
 >wget http://download.redis.io/releases/redis-4.0.8.tar.gz
