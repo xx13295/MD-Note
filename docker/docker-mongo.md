@@ -31,3 +31,38 @@ mongo:5.0.6
 2.停止容器
 
 >docker stop mongo5.0.6
+
+
+
+#### 指定配置文件
+
+```
+docker run --restart=on-failure:3 --privileged=true -d \
+--name mongotest \
+-v /disk1/dockerContainer/mongodbtest/datadb:/data/db \
+-v /disk1/dockerContainer/mongodbtest/conf:/data/configdb \
+-v /etc/localtime:/etc/localtime \
+-p 27027:27027 \
+mongo:5.0.6  -f /data/configdb/mongo.conf --auth
+
+```
+
+mongo.conf
+
+```
+systemLog:
+  destination: file
+  path: /var/log/mongodb/mongod.log
+  logAppend: true
+storage:
+  dbPath: /data/db
+net:
+  port: 27037
+  bindIp: 0.0.0.0
+#security:
+  #authorization: enabled
+  
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+```
