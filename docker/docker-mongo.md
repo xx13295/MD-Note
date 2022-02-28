@@ -43,11 +43,13 @@ docker run --restart=on-failure:3 --privileged=true -d \
 -v /disk1/dockerContainer/mongodbtest/conf:/data/configdb \
 -v /etc/localtime:/etc/localtime \
 -p 27027:27027 \
-mongo:5.0.6  -f /data/configdb/mongo.conf --auth
+mongo:5.0.6  -f /data/configdb/mongo.conf 
 
 ```
 
 mongo.conf
+
+后面要开启security鉴权
 
 ```
 systemLog:
@@ -57,7 +59,7 @@ systemLog:
 storage:
   dbPath: /data/db
 net:
-  port: 27037
+  port: 27027
   bindIp: 0.0.0.0
 #security:
   #authorization: enabled
