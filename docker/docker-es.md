@@ -13,3 +13,10 @@ docker run --privileged=true -d -e ES_JAVA_POTS="-Xms256m -Xmx512m" -e "discover
 
 
 ```
+
+
+###
+
+可以设置容器跟随Docker启动
+
+>docker update es7.12.1 --restart=always
