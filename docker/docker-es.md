@@ -4,7 +4,7 @@
 
 ```
 
-docker run --privileged=true -d -e ES_JAVA_POTS="-Xms256m -Xmx512m" -e "discovery.type=single-node" -p 9200:9200 -p 9300:9300 --name es7.12.1 \
+docker run --privileged=true -d -e ES_JAVA_POTS="-Xms512m -Xmx512m" -e "discovery.type=single-node" -p 9200:9200 -p 9300:9300 --name es7.12.1 \
 -v /disk1/dockerContainer/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
 -v /home/esdata/data:/usr/share/elasticsearch/data \
 -v /etc/localtime:/etc/localtime \
