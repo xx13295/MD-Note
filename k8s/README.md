@@ -17,10 +17,12 @@ minikube能够快速搞定k8s的环境
 
 e.g
 >export http_proxy="http://localhost:port"
+
 >export https_proxy="http://localhost:port"
 
+    
+    官网  https://minikube.sigs.k8s.io/docs/start/
 
-  官网  https://minikube.sigs.k8s.io/docs/start/
 
 >curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
