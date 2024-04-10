@@ -48,15 +48,17 @@ metadata:
   labels:
     name: ojbk
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      name: ojbk
+      app: ojbk
   template:
     metadata:
       name: ojbk
+      namespace: demo
       labels:
-        name: ojbk
+        app: ojbk
+
     spec:
       # nodeSelector:
       # key: gitlab-dev
@@ -71,7 +73,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ojbk
+  name: ojbk-service
+  namespace: demo
 spec:
   selector:
     app: ojbk
@@ -79,7 +82,7 @@ spec:
     - protocol: TCP
       port: 8081
       targetPort: 8081
-      nodePort: 31001
+      #nodePort: 31001
   type: NodePort
 
 ```
@@ -98,4 +101,7 @@ spec:
 > kubectl get pod -n demo
  
 端口转发才能被外头访问到
-> kubectl port-forward ojbk-77f4b659b6-mnxjw  25666:8081 -n demo22
+> kubectl port-forward ojbk-77f4b659b6-mnxjw  25666:8081 -n demo
+
+或者使用
+>minikube service service-ojbk -n demo
