@@ -104,4 +104,4 @@ spec:
 > kubectl port-forward ojbk-77f4b659b6-mnxjw  25666:8081 -n demo
 
 或者使用
->minikube service service-ojbk -n demo
+>minikube service ojbk-service -n demo
