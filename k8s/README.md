@@ -64,11 +64,11 @@ spec:
       # key: gitlab-dev
       containers:
         - name: ojbk
-          image: registry.cn-hangzhou.aliyuncs.com/ojbk-plus/ojbk:1.0.1
+          image: registry.cn-hangzhou.aliyuncs.com/ojbk-plus/ojbk:1.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 8081
+              containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -80,8 +80,8 @@ spec:
     app: ojbk
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 8080
+      targetPort: 8080
       #nodePort: 31001
   type: NodePort
 
