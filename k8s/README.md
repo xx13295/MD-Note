@@ -34,6 +34,18 @@ e.g
 
 > minikube dashboard
 
+dashboard创建的service 采用了 `ClusterIP` 的暴露策略，集群外部没法直接访问，需要设置代理才能访问。
+
+>kubectl proxy  --port=[需要暴露的端口号] --address='[服务器外网IP]' --accept-hosts='^[外部访问服务器的IP]$'
+
+例如 kubectl proxy --port=8889 --address='192.168.11.106' --accept-hosts='^.*'
+
+这时可在浏览器上直接访问192.168.11.106:8889地址
+
+如：http://192.168.11.106:8889/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+
+
+
 当前窗口临时有效
 
 >alias kubectl="minikube kubectl --"
