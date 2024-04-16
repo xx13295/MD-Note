@@ -32,7 +32,7 @@ e.g
 
 ####  上面的http_proxy方式非必要可不用
 
-不需要代练直接安装 有可能会有安装失败的情况。
+不需要代理直接安装 有可能会有安装失败的情况。
 
 >minikube start --image-mirror-country='cn' --container-runtime=containerd
 
