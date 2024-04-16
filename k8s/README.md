@@ -30,6 +30,14 @@ e.g
 
 >minikube start
 
+####  上面的http_proxy方式非必要可不用
+
+不需要代练直接安装 有可能会有安装失败的情况。
+
+>minikube start --image-mirror-country='cn' --container-runtime=containerd
+
+
+
 可视化监控仪表面板
 
 > minikube dashboard
