@@ -53,6 +53,10 @@
 //启动
 >service docker start
 
+或者
+
+>systemctl enable docker --now
+
 
 //查看容器启动失败日志
 >docker logs -f -t --tail 20 614f5d8942ef
