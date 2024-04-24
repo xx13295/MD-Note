@@ -31,5 +31,7 @@
  在原有创建容器的基础上增加 `--network test`  这里的 test 为你创建的network组
  
 之后安装一个nettools检验是否可达
+
 >docker run -itd --name nettools --network test travelping/nettools
+
 进入容器即可ping对应容器的ip测试连通性 要注意的是 要在相同的 network 下才能相互访问
