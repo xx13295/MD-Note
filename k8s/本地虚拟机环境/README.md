@@ -38,9 +38,20 @@ EOF
 
 ```
 
->sudo sysctl --system
+```
+cat > /etc/sysconfig/modules/ipvs.modules <<EOF
+#!/bin/bash
+modprobe -- ip_vs
+modprobe -- ip_vs_rr
+modprobe -- ip_vs_wrr
+modprobe -- ip_vs_sh
+modprobe -- nf_conntrack_ipv4
+EOF
+```
+chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipvs.modules && lsmod | grep -e ip_vs -e nf_conntrack_ipv4
 
-## 2.三件套kubelet、kubeadm、kubectl
+yum install -y ipset ipvsadm
+
 
 #配置k8s的yum源地址
 ```
@@ -56,6 +67,11 @@ http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 
 ```
+
+>sudo sysctl --system
+
+## 2.三件套kubelet、kubeadm、kubectl
+
 查看仓库有哪些版本
 
 yum --showduplicates list kubelet
@@ -82,8 +98,8 @@ systemctl stop firewalld
 
 systemctl disable firewalld
 
-
-
+### 方式一
+执行 初始化 如果失败可以使用 kubeadm reset 后重复执行init
 ```
 sudo kubeadm init \
 --apiserver-advertise-address=192.168.0.131 \
@@ -92,7 +108,6 @@ sudo kubeadm init \
 --kubernetes-version v1.27.6 \
 --service-cidr=10.96.0.0/16 \
 --pod-network-cidr=10.244.0.0/16
-
 
 
 云服务器上安装最好用pod-network-cidr=192.168.0.0/16这样就无须多余的操作
@@ -119,8 +134,7 @@ containerd config default > /etc/containerd/config.toml
 systemctl restart containerd
 
 ```
-sudo kubeadm reset
-在重新init一次就会看到如下
+
 
 ```
 
@@ -153,3 +167,157 @@ kubeadm join k8s-master:6443 --token emhbuv.bwm6bukn2fsswvvm \
         --discovery-token-ca-cert-hash sha256:5a693641c5560b4f91591e4fa032ba8109190577dfed42df7e470e0bfd9ef46f 
 ```
 
+然后node1 也需要 配置一下containerd 然后restart才能kubeadm join 否则会出现 [ERROR CRI]
+
+calico安装
+
+应用operator资源清单文件
+
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml
+
+wget https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml
+
+将custom-resources.yaml中的
+cidr: 192.168.0.0/16 改为实际的cidr 比如10.244.0.0/16
+
+安装calico 出现的问题
+```
+kubectl describe pod coredns-64897985d-ghwtc -n kube-system
+
+发现最后显示 network: stat /var/lib/calico/nodename: no such file or directory:
+
+Warning FailedCreatePodSandBox 6m20s (x5981 over 17h) kubelet (combined from similar events): 
+Failed to create pod sandbox: rpc error:
+ code = Unknown desc = failed to set up sandbox container 
+ "ecb5ac36e4c73944bfb0d180425232e88b378d9238ce8d40951721210178ec09"
+  network for pod "coredns-64897985d-ghwtc": networkPlugin cni failed to set up pod
+   "coredns-64897985d-ghwtc_kube-system" 
+   network: stat /var/lib/calico/nodename: no such file or directory:
+    check that the calico/node container is running and has mounted /var/lib/calico/
+   那创建 nodename 文件 
+   
+mkidr /var/lib/calico/
+touch /var/lib/calico/nodename
+
+```
+
+
+问题[failed to find plugin "flannel" in path [/opt/cni/bin]
+```
+
+进入指定目录查看，是否有flannel
+cd /opt/cni/bin
+
+解决：
+
+如果缺少flannel，则需要下载CNI插件
+https://github.com/containernetworking/plugins/releases
+
+wget https://github.com/containernetworking/plugins/releases/download/v0.8.6/cni-plugins-linux-amd64-v0.8.6.tgz
+
+mkdir -p /opt/cni-plugins/
+tar -zxvf cni-plugins-linux-amd64-v0.8.6.tgz -C /opt/cni-plugins/
+cp /opt/cni-plugins/flannel /opt/cni/bin/
+
+```
+
+
+验证 安装一个Dashborad 玩一下
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+kubectl edit svc kubernetes-dashboard -n kubernetes-dashboard
+
+将 type: ClusterIP 改为 type: NodePort       
+ClusterIP=集群内访问，NodePort=集群外也可以访问
+
+kubectl get svc -A |grep kubernetes-dashboard
+
+访问： https://集群任意IP:端口      https://192.168.0.133:32064
+
+#创建访问账号，准备一个yaml文件； vi dash.yaml
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+然后应用一下
+kubectl apply -f dash.yaml
+
+kubectl -n kubernetes-dashboard create token admin-user
+
+就会获得token
+
+直接用token登录完事
+
+
+### 方式2
+
+
+kubeadm.yaml
+```
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 192.168.0.131
+  bindPort: 6443
+nodeRegistration:
+  criSocket: unix:///run/containerd/containerd.sock
+  taints:
+  - effect: PreferNoSchedule
+    key: node-role.kubernetes.io/master
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+kubernetesVersion: 1.27.6
+imageRepository: registry.aliyuncs.com/google_containers
+networking:
+  podSubnet: 10.244.0.0/16
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+failSwapOn: false
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: ipvs
+```
+
+>kubeadm config images pull --config kubeadm.yaml
+
+>kubeadm init --config kubeadm.yaml
+
+
+
+安装 helm
+
+Helm是Kubernetes的包管理器，Helm可以安装Kubernetes的一些常用组件。
+
+```
+wget https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz
+tar -zxvf helm-v3.10.3-linux-amd64.tar.gz
+mv linux-amd64/helm  /usr/local/bin/
+
+或者直接脚本
+
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+网站https://helm.sh/zh/docs/intro/install/
+
+```
