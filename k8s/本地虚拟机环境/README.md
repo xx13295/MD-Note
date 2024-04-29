@@ -211,13 +211,14 @@ cd /opt/cni/bin
 解决：
 
 如果缺少flannel，则需要下载CNI插件
-https://github.com/containernetworking/plugins/releases
+https://github.com/containernetworking/plugins/releases  
+公告里写0.9版本移除了flannel 它的新仓库https://github.com/flannel-io/cni-plugin/releases  笔者这里没试验最新版。
 
 wget https://github.com/containernetworking/plugins/releases/download/v0.8.6/cni-plugins-linux-amd64-v0.8.6.tgz
 
-mkdir -p /opt/cni-plugins/
-tar -zxvf cni-plugins-linux-amd64-v0.8.6.tgz -C /opt/cni-plugins/
-cp /opt/cni-plugins/flannel /opt/cni/bin/
+mkdir cni-temp
+tar -zxvf cni-plugins-linux-amd64-v0.8.6.tgz -C cni-temp/
+cp cni-temp/flannel /opt/cni/bin/
 
 ```
 
@@ -320,4 +321,35 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 网站https://helm.sh/zh/docs/intro/install/
 
+```
+
+
+查看问题的一些命令
+
+journalctl -xeu kubelet | grep error
+
+kubectl describe pod coredns-64897985d-ghwtc -n kube-system
+
+kubectl logs ks-installer-5d5bb65f58-9zpnw -n kubesphere-system
+
+systemctl status kubelet
+
+
+检验k8s dns可用
+
+```
+
+创建一个 容器
+
+kubectl run curl --image=radial/busyboxplus:curl -it
+
+查看解析是否正常
+
+nslookup kubernetes.default
+
+后续进入
+
+kubectl exec -it curl -- /bin/sh
+
+退出 CTRL+ D
 ```

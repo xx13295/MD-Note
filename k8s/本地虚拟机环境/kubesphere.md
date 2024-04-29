@@ -39,9 +39,186 @@ For more details, please visit https://kubesphere.io.
 >kubectl get pod -n kubesphere-system
 
 
+### 前置环境 
+nfs文件系统
+```
+    yum install -y nfs-utils
+    
+    在master 执行以下命令
+    echo "/nfs/data/ *(insecure,rw,sync,no_root_squash)" > /etc/exports
+    
+    创建共享目录
+    mkdir -p /nfs/data
+    
+    在master执行
+    
+    systemctl enable rpcbind
+    systemctl enable nfs-server
+    systemctl start rpcbind
+    systemctl start nfs-server
+    
+    使配置生效
+    exportfs -r
+    
+    检查配置是否生效
+    exportfs
+```
+配置nfs-client（选做）
+```
+showmount -e 192.168.0.131
+
+mkdir -p /nfs/data
+
+mount -t nfs 192.168.0.131:/nfs/data /nfs/data
+
+```
+
+配置默认存储
+
+sc.yaml
+```
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: k8s-sigs.io/nfs-subdir-external-provisioner
+parameters:
+  archiveOnDelete: "true"  ## 删除pv的时候，pv的内容是否要备份
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-client-provisioner
+  labels:
+    app: nfs-client-provisioner
+  # replace with namespace where provisioner is deployed
+  namespace: default
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+        - name: nfs-client-provisioner
+          image: registry.cn-hangzhou.aliyuncs.com/lfy_k8s_images/nfs-subdir-external-provisioner:v4.0.2
+          # resources:
+          #    limits:
+          #      cpu: 10m
+          #    requests:
+          #      cpu: 10m
+          volumeMounts:
+            - name: nfs-client-root
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: k8s-sigs.io/nfs-subdir-external-provisioner
+            - name: NFS_SERVER
+              value: 192.168.0.131 ## 指定自己nfs服务器地址
+            - name: NFS_PATH  
+              value: /nfs/data  ## nfs服务器共享的目录
+      volumes:
+        - name: nfs-client-root
+          nfs:
+            server: 192.168.0.131
+            path: /nfs/data
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nfs-client-provisioner
+  # replace with namespace where provisioner is deployed
+  namespace: default
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nfs-client-provisioner-runner
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get", "list", "watch", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "update", "patch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: run-nfs-client-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    # replace with namespace where provisioner is deployed
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: nfs-client-provisioner-runner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+  # replace with namespace where provisioner is deployed
+  namespace: default
+rules:
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+  # replace with namespace where provisioner is deployed
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    # replace with namespace where provisioner is deployed
+    namespace: default
+roleRef:
+  kind: Role
+  name: leader-locking-nfs-client-provisioner
+  apiGroup: rbac.authorization.k8s.io
+
+```
+检查配置是否生效
+
+>kubectl get sc
+
+metrics-server
+
+>kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+如果镜像下载失败就修改components.yaml文件中的镜像地址为registry.cn-hangzhou.aliyuncs.com/ojbk-plus/metrics-server:0.7.1
+
+
 kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.4.1/kubesphere-installer.yaml
 
 ````
+cluster-configuration.yaml  注意版本是和上面kubesphere-installer.yaml对应的 以后出新版本需要更换
+下面是全功能开启 不需要就改成false
 
 ---
 apiVersion: installer.kubesphere.io/v1alpha1
@@ -168,3 +345,27 @@ spec:
 
 ````
 kubectl apply -f cluster-configuration.yaml
+
+
+在 cluster-configuration.yaml中指定我们需要开启的功能
+参照官网“启用可插拔组件”
+https://kubesphere.com.cn/docs/pluggable-components/overview/
+
+
+https://192.168.0.131:30880
+账号 ： admin
+密码 ： P@88w0rd
+
+
+### 以下内容有需求再说否则忽略
+
+解决etcd监控证书找不到问题 
+```
+
+kubectl -n kubesphere-monitoring-system create secret generic kube-etcd-client-certs  --from-file=etcd-client-ca.crt=/etc/kubernetes/pki/etcd/ca.crt  --from-file=etcd-client.crt=/etc/kubernetes/pki/apiserver-etcd-client.crt  --from-file=etcd-client.key=/etc/kubernetes/pki/apiserver-etcd-client.key
+
+```
+
+如果为k8s单节点，需要执行以下命令允许master部署pod
+kubectl taint nodes --all node-role.kubernetes.io/master-
+不然nfs-client一直在pending状态
